@@ -1,0 +1,19 @@
+{
+  "name": "bumblebot",
+  "version": "0.1.0",
+  "description": "Procedurally generated pollinators.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeMacabre/bumblebot.git"
+  },
+  "author": "CodeMacabre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeMacabre/bumblebot/issues"
+  },
+  "homepage": "https://github.com/CodeMacabre/bumblebot#readme"
+}
