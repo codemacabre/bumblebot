@@ -1,4 +1,4 @@
-int beeGender;
+int beeGender = floor(random(5));
 int pattern = floor(random(7));
 color headCol =    0;
 color thorax1Col = 0;
@@ -19,11 +19,13 @@ void setup() {
   setGender();
   colorMode(HSB, 360, 100, 100);
   color0 = color(0, 0, 0);
-  color1 = color(floor(random(30, 60)), floor(random(80, 99)), floor(random(75, 99)));
-  color2 = color(floor(random(30, 60)), floor(random(80, 99)), floor(random(75, 99)));
-  color3 = color(0, 0, 99);
+  color1 = color(floor(random(360)), floor(random(100)), floor(random(50, 100)));
+  color2 = color(floor(random(360)), floor(random(100)), floor(random(50, 100)));
+  color3 = color(0, 0, 100);
   setColors();
   drawBee();
+  smooth();
+  save("output.png");
 }
 
 void drawBee() {
@@ -123,7 +125,7 @@ void drawBee() {
    ***********/
    
   // Fore legs
-  fill(0, 50, 25);
+  fill(0, 20, 15);
   stroke(0, 0, 0);
   triangle(centerX - coxaForeX,        centerY - coxaForeY,
            centerX - femurForeX,       centerY - femurForeY,
@@ -146,7 +148,7 @@ void drawBee() {
            centerX + tarsusForeX,      centerY - tarsusForeY);
            
   // Mid legs
-  fill(0, 50, 25);
+  fill(0, 20, 15);
   stroke(0, 0, 0);
   triangle(centerX - coxaMidX,         centerY + coxaMidY,
            centerX - femurMidX,        centerY + femurMidY,
@@ -169,7 +171,7 @@ void drawBee() {
            centerX + tarsusMidX,       centerY + tarsusMidY);
            
   // Hind legs
-  fill(0, 50, 25);
+  fill(0, 20, 15);
   stroke(0, 0, 0);
   if (beeGender <= 1) {
     // queen or worker
@@ -217,9 +219,9 @@ void drawBee() {
   }
 
   // Anennae
-  fill(0, 50, 25);
+  noFill();
   stroke(0, 0, 0);
-  if (beeGender <= 2 ) {
+  if (beeGender <= 2) {
     // Females
     beginShape();
     vertex(centerX - headOriginX, centerY - headOriginY);
@@ -244,7 +246,7 @@ void drawBee() {
   }
   
   // Eyes
-  fill(0, 50, 50);
+  fill(0, 20, 15);
   stroke(0, 0, 0);
   beginShape();
   vertex(centerX - headOriginX, centerY - thoraxOriginY);
@@ -414,6 +416,12 @@ void setGender() {
 }
 
 void setColors() {
+  int yellower = floor(random(10));
+  if (yellower <= 6) {
+    println("bee colours made yellower");
+    color1 = color(floor(random(30,60)), floor(random(75, 100)), floor(random(75, 100)));
+    color2 = color(floor(random(30,60)), floor(random(75, 100)), floor(random(75, 100)));
+  }
   switch (pattern) {
   case 0:
     println("black w/ colour1 tail");
