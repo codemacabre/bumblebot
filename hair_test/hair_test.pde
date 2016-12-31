@@ -14,34 +14,24 @@ void setup() {
 }
 
 void draw() {
+  int centerX = floor(width * 0.5);
+  int centerY = floor(height * 0.5);
   
   noStroke();
   fill(#101013);
   rect(centerX - 100, centerY - 100, 200, 200);
   
-  drawHair();
- 
-  noLoop();
-  save("output.png");
-}
-
-void drawHair() {
   stroke(color1);
-  for(int iX = centerX - 100; iX <= centerX + 100; iX++) {
-    for (int iY = centerY - 100; iY <= centerY - 100; iY++) {
-      if(iX < centerX) {
-        line(iX, iY, iX - 5, iY + 10);
-      } else if(iX < (centerX - 50)) {
-        line(iX, iY, iX - 3, iY + 10);
-      } else if(iX < (centerX - 25)) {
-        line(iX, iY, iX - 1, iY + 10);
-      } else if(iX > (centerX + 25)) {
-        line(iX, iY, iX + 1, iY + 10);
-      } else if(iX > (centerX + 50)) {
-        line(iX, iY, iX + 3, iY + 10);
-      } else {
+  for(int iX = centerX - 100; iX <= centerX + 100; iX += 2) {
+    for (int iY = centerY - 100; iY <= centerY + 100; iY += 2) {
+      if(iX > centerX) {
         line(iX, iY, iX + 5, iY + 10);
+      } else if(iX < centerX) {
+        line(iX, iY, iX - 5, iY + 10);
       }
     }
   }
+ 
+  noLoop();
+  save("output.png");
 }
