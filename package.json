@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/CodeMacabre/bumblebot/issues"
   },
-  "homepage": "https://github.com/CodeMacabre/bumblebot#readme"
+  "homepage": "https://github.com/CodeMacabre/bumblebot#readme",
+  "dependencies": {
+    "twit": "^2.2.5"
+  }
 }
