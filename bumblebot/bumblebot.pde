@@ -13,6 +13,16 @@ color color1 = 0;
 color color2 = 0;
 color color3 = 0;
 
+java.awt.Polygon beeHead = new java.awt.Polygon();
+java.awt.Polygon beeThorax1 = new java.awt.Polygon();
+java.awt.Polygon beeThorax2 = new java.awt.Polygon();
+java.awt.Polygon beeThorax3 = new java.awt.Polygon();
+java.awt.Polygon beeAbdTop = new java.awt.Polygon();
+java.awt.Polygon beeAbdMid1 = new java.awt.Polygon();
+java.awt.Polygon beeAbdMid2 = new java.awt.Polygon();
+java.awt.Polygon beeTail1 = new java.awt.Polygon();
+java.awt.Polygon beeTail2 = new java.awt.Polygon();
+
 void setup() {
   size(512, 512);
   background(255);
@@ -24,6 +34,14 @@ void setup() {
   color3 = color(0, 0, 100);
   setColors();
   drawBee();
+  drawHair(beeHead);
+  drawHair(beeThorax1);
+  drawHair(beeThorax2);
+  drawHair(beeAbdTop);
+  drawHair(beeAbdMid1);
+  drawHair(beeAbdMid2);
+  drawHair(beeTail1);
+  drawHair(beeTail2);
   smooth();
   save("output.png");
 }
@@ -72,6 +90,8 @@ void drawBee() {
   int antennae1Y = floor(random(50, 65));
   int antennae2X = antennae1X + floor(random(10, 25));
   int antennae2Y = antennae1Y + floor(random(25));
+  int antennae3X = antennae2X;
+  int antennae3Y = antennae2Y + floor(random(50, 65));
   
   // Head
   int headOriginX = floor(random(10, 20));
@@ -225,16 +245,6 @@ void drawBee() {
     // Females
     beginShape();
     vertex(centerX - headOriginX, centerY - headOriginY);
-    vertex(centerX - antennae2X,  centerY - antennae2Y);
-    endShape();
-    beginShape();
-    vertex(centerX + headOriginX, centerY - headOriginY);
-    vertex(centerX + antennae2X,  centerY - antennae2Y);
-    endShape();
-  } else {
-    // Males
-    beginShape();
-    vertex(centerX - headOriginX, centerY - headOriginY);
     vertex(centerX - antennae1X,  centerY - antennae1Y);
     vertex(centerX - antennae2X,  centerY - antennae2Y);
     endShape();
@@ -243,11 +253,28 @@ void drawBee() {
     vertex(centerX + antennae1X,  centerY - antennae1Y);
     vertex(centerX + antennae2X,  centerY - antennae2Y);
     endShape();
+  } else {
+    // Males
+    beginShape();
+    curveVertex(centerX + headOriginX, centerY - headOriginY);
+    curveVertex(centerX - headOriginX, centerY - headOriginY);
+    curveVertex(centerX - antennae1X,  centerY - antennae1Y);
+    curveVertex(centerX - antennae2X,  centerY - antennae2Y);
+    curveVertex(centerX - antennae3X,  centerY - antennae3Y);
+    endShape();
+    beginShape();
+    curveVertex(centerX + headOriginX, centerY - headOriginY);
+    curveVertex(centerX + headOriginX, centerY - headOriginY);
+    curveVertex(centerX + headOriginX, centerY - headOriginY);
+    curveVertex(centerX + antennae1X,  centerY - antennae1Y);
+    curveVertex(centerX + antennae2X,  centerY - antennae2Y);
+    curveVertex(centerX + antennae3X,  centerY - antennae3Y);
+    endShape();
   }
   
   // Eyes
   fill(0, 20, 15);
-  stroke(0, 0, 0);
+  stroke(0, 20, 15);
   beginShape();
   vertex(centerX - headOriginX, centerY - thoraxOriginY);
   vertex(centerX - ((headOriginX + thoraxOriginX) * 0.5), centerY - thoraxOriginY);
@@ -264,101 +291,128 @@ void drawBee() {
   endShape();
 
   // Head
-  fill(headCol);
-  stroke(headCol);
+  fill(0, 20, 15);
+  stroke(0, 20, 15);
+  beeHead.addPoint(centerX - headOriginX, centerY - headOriginY);
+  beeHead.addPoint(centerX + headOriginX, centerY - headOriginY);
+  beeHead.addPoint(centerX + headOriginX, centerY - thoraxOriginY);
+  beeHead.addPoint(centerX - headOriginX, centerY - thoraxOriginY);
+  beeHead.addPoint(centerX - headOriginX, centerY - headOriginY);
   beginShape();
-  vertex(centerX - headOriginX, centerY - headOriginY);
-  vertex(centerX + headOriginX, centerY - headOriginY);
-  vertex(centerX + headOriginX, centerY - thoraxOriginY);
-  vertex(centerX - headOriginX, centerY - thoraxOriginY);
-  vertex(centerX - headOriginX, centerY - headOriginY);
+  for(int i = 0; i < beeHead.npoints; i++) {
+    vertex(beeHead.xpoints[i], beeHead.ypoints[i]);
+  }
   endShape();
 
   // Thorax
-  fill(thorax1Col);
-  stroke(thorax1Col);
+  fill(0, 20, 15);
+  stroke(0, 20, 15);
+  beeThorax1.addPoint(centerX - thoraxOriginX, centerY - thoraxOriginY);
+  beeThorax1.addPoint(centerX + thoraxOriginX, centerY - thoraxOriginY);
+  beeThorax1.addPoint(centerX + coxaForeX,     centerY - coxaForeY);
+  beeThorax1.addPoint(centerX - coxaForeX,     centerY - coxaForeY);
+  beeThorax1.addPoint(centerX - thoraxOriginX, centerY - thoraxOriginY);
   beginShape();
-  vertex(centerX - thoraxOriginX, centerY - thoraxOriginY);
-  vertex(centerX + thoraxOriginX, centerY - thoraxOriginY);
-  vertex(centerX + coxaForeX,     centerY - coxaForeY);
-  vertex(centerX - coxaForeX,     centerY - coxaForeY);
-  vertex(centerX - thoraxOriginX, centerY - thoraxOriginY);
+  for(int i = 0; i < beeThorax1.npoints; i++) {
+    vertex(beeThorax1.xpoints[i], beeThorax1.ypoints[i]);
+  }
   endShape();
   
-  fill(thorax2Col);
-  stroke(thorax2Col);
+  fill(0, 20, 15);
+  stroke(0, 20, 15);
+  beeThorax2.addPoint(centerX - coxaForeX,     centerY - coxaForeY);
+  beeThorax2.addPoint(centerX + coxaForeX,     centerY - coxaForeY);
+  beeThorax2.addPoint(centerX + thoraxMidX,    centerY - thoraxMidY);
+  beeThorax2.addPoint(centerX + coxaMidX,      centerY - coxaMidY);
+  beeThorax2.addPoint(centerX - coxaMidX,      centerY - coxaMidY);
+  beeThorax2.addPoint(centerX - thoraxMidX,    centerY - thoraxMidY);
+  beeThorax2.addPoint(centerX - coxaForeX,     centerY - coxaForeY);
   beginShape();
-  vertex(centerX - coxaForeX,     centerY - coxaForeY);
-  vertex(centerX + coxaForeX,     centerY - coxaForeY);
-  vertex(centerX + thoraxMidX,    centerY - thoraxMidY);
-  vertex(centerX + coxaMidX,      centerY - coxaMidY);
-  vertex(centerX - coxaMidX,      centerY - coxaMidY);
-  vertex(centerX - thoraxMidX,    centerY - thoraxMidY);
-  vertex(centerX - coxaForeX,     centerY - coxaForeY);
+  for(int i = 0; i < beeThorax2.npoints; i++) {
+    vertex(beeThorax2.xpoints[i], beeThorax2.ypoints[i]);
+  }
   endShape();
-  beginShape();
   
-  fill(thorax3Col);
-  stroke(thorax3Col);
-  vertex(centerX - coxaMidX,      centerY - coxaMidY);
-  vertex(centerX + coxaMidX,      centerY - coxaMidY);
-  vertex(centerX + coxaHindX,     centerY + coxaHindY);
-  vertex(centerX - coxaHindX,     centerY + coxaHindY);
-  vertex(centerX - coxaMidX,      centerY - coxaMidY);
+  fill(0, 20, 15);
+  stroke(0, 20, 15);
+  beeThorax3.addPoint(centerX - coxaMidX,      centerY - coxaMidY);
+  beeThorax3.addPoint(centerX + coxaMidX,      centerY - coxaMidY);
+  beeThorax3.addPoint(centerX + coxaHindX,     centerY + coxaHindY);
+  beeThorax3.addPoint(centerX - coxaHindX,     centerY + coxaHindY);
+  beeThorax3.addPoint(centerX - coxaMidX,      centerY - coxaMidY);
+  beginShape();
+  for(int i = 0; i < beeThorax3.npoints; i++) {
+    vertex(beeThorax3.xpoints[i], beeThorax3.ypoints[i]);
+  }
   endShape();
 
   // Abdomen
-  fill(topCol);
-  stroke(topCol);
+  fill(0, 20, 15);
+  stroke(0, 20, 15);
+  beeAbdTop.addPoint(centerX - abdomen1X, centerY + abdomen1Y);
+  beeAbdTop.addPoint(centerX + abdomen1X, centerY + abdomen1Y);
+  beeAbdTop.addPoint(centerX + abdomen2X, centerY + abdomen1Y + abdomen2Y);
+  beeAbdTop.addPoint(centerX - abdomen2X, centerY + abdomen1Y + abdomen2Y);
+  beeAbdTop.addPoint(centerX - abdomen1X, centerY + abdomen1Y);
   beginShape();
-  vertex(centerX - abdomen1X, centerY + abdomen1Y);
-  vertex(centerX + abdomen1X, centerY + abdomen1Y);
-  vertex(centerX + abdomen2X, centerY + abdomen1Y + abdomen2Y);
-  vertex(centerX - abdomen2X, centerY + abdomen1Y + abdomen2Y);
-  vertex(centerX - abdomen1X, centerY + abdomen1Y);
+  for(int i = 0; i < beeAbdTop.npoints; i++) {
+    vertex(beeAbdTop.xpoints[i], beeAbdTop.ypoints[i]);
+  }
   endShape();
   
-  fill(mid1Col);
-  stroke(mid1Col);
+  fill(0, 20, 15);
+  stroke(0, 20, 15);
+  beeAbdMid1.addPoint(centerX - abdomen2X, centerY + abdomen1Y + abdomen2Y);
+  beeAbdMid1.addPoint(centerX + abdomen2X, centerY + abdomen1Y + abdomen2Y);
+  beeAbdMid1.addPoint(centerX + abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
+  beeAbdMid1.addPoint(centerX - abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
+  beeAbdMid1.addPoint(centerX - abdomen2X, centerY + abdomen1Y + abdomen2Y);
   beginShape();
-  vertex(centerX - abdomen2X, centerY + abdomen1Y + abdomen2Y);
-  vertex(centerX + abdomen2X, centerY + abdomen1Y + abdomen2Y);
-  vertex(centerX + abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
-  vertex(centerX - abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
-  vertex(centerX - abdomen2X, centerY + abdomen1Y + abdomen2Y);
+  for(int i = 0; i < beeAbdMid1.npoints; i++) {
+    vertex(beeAbdMid1.xpoints[i], beeAbdMid1.ypoints[i]);
+  }
   endShape();
   
-  fill(mid2Col);
-  stroke(mid2Col);
+  fill(0, 20, 15);
+  stroke(0, 20, 15);
+  beeAbdMid2.addPoint(centerX - abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
+  beeAbdMid2.addPoint(centerX + abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
+  beeAbdMid2.addPoint(centerX + abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
+  beeAbdMid2.addPoint(centerX - abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
+  beeAbdMid2.addPoint(centerX - abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
   beginShape();
-  vertex(centerX - abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
-  vertex(centerX + abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
-  vertex(centerX + abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
-  vertex(centerX - abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
-  vertex(centerX - abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
+  for(int i = 0; i < beeAbdMid2.npoints; i++) {
+    vertex(beeAbdMid2.xpoints[i], beeAbdMid2.ypoints[i]);
+  }
   endShape();
   
-  fill(tailCol);
-  stroke(tailCol);
+  fill(0, 20, 15);
+  stroke(0, 20, 15);
+  beeTail1.addPoint(centerX - abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
+  beeTail1.addPoint(centerX + abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
+  beeTail1.addPoint(centerX + abdomen5X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y);
+  beeTail1.addPoint(centerX + abdomen6X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y);
+  beeTail1.addPoint(centerX - abdomen6X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y);
+  beeTail1.addPoint(centerX - abdomen5X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y);
+  beeTail1.addPoint(centerX - abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
   beginShape();
-  vertex(centerX - abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
-  vertex(centerX + abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
-  vertex(centerX + abdomen5X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y);
-  vertex(centerX + abdomen6X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y);
-  vertex(centerX - abdomen6X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y);
-  vertex(centerX - abdomen5X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y);
-  vertex(centerX - abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
+  for(int i = 0; i < beeTail1.npoints; i++) {
+    vertex(beeTail1.xpoints[i], beeTail1.ypoints[i]);
+  }
   endShape();
   
   if (beeGender > 2) {
-  fill(tailCol);
-  stroke(tailCol);
+  fill(0, 20, 15);
+  stroke(0, 20, 15);
+  beeTail2.addPoint(centerX - abdomen6X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y);
+  beeTail2.addPoint(centerX + abdomen6X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y);
+  beeTail2.addPoint(centerX, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y + abdomen7Y);
+  beeTail2.addPoint(centerX, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y + abdomen7Y);
+  beeTail2.addPoint(centerX - abdomen6X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y);
   beginShape();
-  vertex(centerX - abdomen6X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y);
-  vertex(centerX + abdomen6X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y);
-  vertex(centerX, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y + abdomen7Y);
-  vertex(centerX, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y + abdomen7Y);
-  vertex(centerX - abdomen6X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y);
+  for(int i = 0; i < beeTail2.npoints; i++) {
+    vertex(beeTail2.xpoints[i], beeTail2.ypoints[i]);
+  }
   endShape();
   }
 
@@ -500,5 +554,73 @@ void setColors() {
     mid2Col    = color1;
     tailCol    = color2;
     break;
+  }
+}
+
+void drawHair(java.awt.Polygon bodyPart) {
+  int centerX = width / 2;
+  
+  // Get color
+  if(bodyPart == beeHead) {
+    stroke(headCol, 60);
+  } else if(bodyPart == beeThorax1) {
+    stroke(thorax1Col, 60);
+  } else if(bodyPart == beeThorax2) {
+    stroke(thorax2Col, 60);
+  } else if(bodyPart == beeThorax3) {
+    stroke(thorax3Col, 60);
+  } else if(bodyPart == beeAbdTop) {
+    stroke(topCol, 60);
+  } else if(bodyPart == beeAbdMid1) {
+    stroke(mid1Col, 60);
+  } else if(bodyPart == beeAbdMid2) {
+    stroke(mid2Col, 60);
+  } else if(bodyPart == beeTail1 || bodyPart == beeTail2) {
+    stroke(tailCol, 60);
+  }
+  
+  for(int iX = 0; iX < width; iX++) {
+    for (int iY = 0; iY < height; iY++) {
+      if(bodyPart.contains(iX, iY)) {
+        if(iX % 2 == 0 && iY % 2 == 0) {
+          int randomiser = floor(random(10));
+          int hairLength = floor(random(9, 13));
+          int hairDirectionL = floor(random(-7, 0));
+          int hairDirectionC = floor(random(-5, 5));
+          int hairDirectionR = floor(random(0, 7));
+          if(randomiser > 2) {
+            if(iX < (centerX - 20)) {
+              line(iX, iY, iX + hairDirectionL, iY + hairLength);
+            } else if (iX > (centerX - 25) && iX < (centerX + 25)) {
+              line(iX, iY, iX + hairDirectionC, iY + hairLength);
+            } else if(iX > (centerX + 20)) {
+              line(iX, iY, iX + hairDirectionR, iY + hairLength);
+            }
+          }
+        }
+      }
+    }
+  }
+  for(int iX = 0; iX < width; iX++) {
+    for (int iY = 0; iY < height; iY++) {
+      if(bodyPart.contains(iX, iY)) {
+        if(iX % 3 == 0 && iY % 2 == 0) {
+          int randomiser = floor(random(10));
+          int hairLength = floor(random(9, 13));
+          int hairDirectionL = floor(random(-7, 0));
+          int hairDirectionC = floor(random(-5, 5));
+          int hairDirectionR = floor(random(0, 7));
+          if(randomiser > 2) {
+            if(iX < (centerX - 30)) {
+              line(iX, iY, iX + hairDirectionL, iY + hairLength);
+            } else if (iX > (centerX - 35) && iX < (centerX + 35)) {
+              line(iX, iY, iX + hairDirectionC, iY + hairLength);
+            } else if(iX > (centerX + 30)) {
+              line(iX, iY, iX + hairDirectionR, iY + hairLength);
+            }
+          }
+        }
+      }
+    }
   }
 }
