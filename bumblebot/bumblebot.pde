@@ -37,6 +37,7 @@ void setup() {
   drawHair(beeHead);
   drawHair(beeThorax1);
   drawHair(beeThorax2);
+  drawHair(beeThorax3);
   drawHair(beeAbdTop);
   drawHair(beeAbdMid1);
   drawHair(beeAbdMid2);
@@ -44,17 +45,18 @@ void setup() {
   drawHair(beeTail2);
   smooth();
   save("output.png");
+  exit();
 }
 
 void drawBee() {
-  
+
   /*************
    * VARIABLES *
    *************/
-   
+
   int centerX = floor(width * 0.5);
   int centerY = floor(height * 0.5);
-  
+
   // Fore legs
   int coxaForeX   = floor(random(25, 35));
   int femurForeX  = coxaForeX + 10;
@@ -64,7 +66,7 @@ void drawBee() {
   int femurForeY  = coxaForeY + 20;
   int tibiaForeY  = femurForeY + 30;
   int tarsusForeY = tibiaForeY + 5;
-  
+
   // Mid legs
   int coxaMidX    = coxaForeX;
   int femurMidX   = coxaMidX + 20;
@@ -74,7 +76,7 @@ void drawBee() {
   int femurMidY   = coxaMidY + 5;
   int tibiaMidY   = femurMidY + 20;
   int tarsusMidY  = tibiaMidY + 3;
-  
+
   // Hind legs
   int coxaHindX   = floor(random(15, 30));
   int femurHindX  = coxaHindX + 20;
@@ -84,7 +86,7 @@ void drawBee() {
   int femurHindY  = coxaHindY + 5;
   int tibiaHindY  = femurHindY + 50;
   int tarsusHindY = tibiaHindY + 10;
-  
+
   // Antennae
   int antennae1X = floor(random(15, 35));
   int antennae1Y = floor(random(50, 65));
@@ -92,17 +94,17 @@ void drawBee() {
   int antennae2Y = antennae1Y + floor(random(25));
   int antennae3X = antennae2X;
   int antennae3Y = antennae2Y + floor(random(50, 65));
-  
+
   // Head
   int headOriginX = floor(random(10, 20));
   int headOriginY = floor(random(45, 50));
-  
+
   // Thorax
   int thoraxOriginX = coxaHindX;
   int thoraxOriginY = 35;
   int thoraxMidX = floor(random(coxaForeX, coxaForeX + 5));
   int thoraxMidY = floor((coxaForeY + coxaMidY) * 0.5);
-  
+
   // Abdomen
   int abdomen1X = thoraxOriginX;
   int abdomen2X = floor(random(abdomen1X + 20, abdomen1X + 30));
@@ -117,36 +119,36 @@ void drawBee() {
   int abdomen5Y = floor(random(20, 25));
   int abdomen6Y = floor(random(abdomen5Y - 2, abdomen5Y + 2));
   int abdomen7Y = floor(random(5, 10)); // males only
-  
+
   // Wings
   int wingOriginX = floor(random(coxaForeX - 10, coxaForeX - 5));
   int wingOriginY = thoraxMidY;
-  
+
   int wingFore1X = floor(random(wingOriginX + 80, wingOriginX + 150));
   int wingFore2X = floor(random(wingFore1X + 30, wingFore1X + 50));
   int wingFore3X = floor(random(wingFore2X - 30, wingFore1X + 30));
   int wingFore4X = floor(random(wingFore1X - 20, wingFore1X - 10));
-  
+
   int wingFore1Y = floor(random(wingOriginY + 10, wingOriginY + 50));
   int wingFore2Y = floor(random(wingFore1Y - 30, wingFore1Y - 20));
   int wingFore3Y = floor(random(wingFore2Y - 30, wingFore2Y - 20));
   int wingFore4Y = floor(random(wingFore3Y - 20, wingFore3Y - 5));
-  
+
   int wingHind1X = wingFore4X;
   int wingHind2X = floor(random(wingHind1X + 5,  wingHind1X + 10));
   int wingHind3X = floor(random(wingHind2X - 30, wingHind1X - 20));
-  
+
   int wingHind1Y = wingFore4Y;
   int wingHind2Y = floor(random(wingHind1Y - 20, wingHind1Y - 10));
   int wingHind3Y = floor(random(wingHind2Y - 20, wingHind2Y - 10));
-  
+
   /***********
    * DRAWING *
    ***********/
-   
+
   // Fore legs
-  fill(0, 20, 15);
-  stroke(0, 0, 0);
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   triangle(centerX - coxaForeX,        centerY - coxaForeY,
            centerX - femurForeX,       centerY - femurForeY,
            centerX - (femurForeX + 2), centerY - femurForeY);
@@ -166,10 +168,10 @@ void drawBee() {
            centerX + (tibiaForeX - 2), centerY - tibiaForeY);
   line(    centerX + tibiaForeX,       centerY - tibiaForeY,
            centerX + tarsusForeX,      centerY - tarsusForeY);
-           
+
   // Mid legs
-  fill(0, 20, 15);
-  stroke(0, 0, 0);
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   triangle(centerX - coxaMidX,         centerY + coxaMidY,
            centerX - femurMidX,        centerY + femurMidY,
            centerX - (femurMidX + 2),  centerY + (femurMidY - 3));
@@ -179,7 +181,7 @@ void drawBee() {
            centerX - (tibiaMidX - 3),  centerY + (tibiaMidY + 1));
   line(    centerX - tibiaMidX,        centerY + tibiaMidY,
            centerX - tarsusMidX,       centerY + tarsusMidY);
-           
+
   triangle(centerX + coxaMidX,         centerY + coxaMidY,
            centerX + femurMidX,        centerY + femurMidY,
            centerX + (femurMidX + 2),  centerY + (femurMidY - 3));
@@ -189,10 +191,10 @@ void drawBee() {
            centerX + (tibiaMidX - 3),  centerY + (tibiaMidY + 1));
   line(    centerX + tibiaMidX,        centerY + tibiaMidY,
            centerX + tarsusMidX,       centerY + tarsusMidY);
-           
+
   // Hind legs
-  fill(0, 20, 15);
-  stroke(0, 0, 0);
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   if (beeGender <= 1) {
     // queen or worker
     triangle(centerX - coxaHindX,        centerY + coxaHindY,
@@ -204,7 +206,7 @@ void drawBee() {
              centerX - (tibiaHindX - 8), centerY + (tibiaHindY + 2));
     line(    centerX - tibiaHindX,       centerY + tibiaHindY,
              centerX - tarsusHindX,      centerY + tarsusHindY);
-  
+
     triangle(centerX + coxaHindX,        centerY + coxaHindY,
              centerX + femurHindX,       centerY + femurHindY,
              centerX + (femurHindX + 3), centerY + (femurHindY - 4));
@@ -226,7 +228,7 @@ void drawBee() {
              centerX - (tibiaHindX - 5), centerY + (tibiaHindY + 1));
     line(    centerX - tibiaHindX,       centerY + tibiaHindY,
              centerX - tarsusHindX,      centerY + tarsusHindY);
-  
+
     triangle(centerX + coxaHindX,        centerY + coxaHindY,
              centerX + femurHindX,       centerY + femurHindY,
              centerX + (femurHindX + 2), centerY + (femurHindY - 3));
@@ -240,7 +242,7 @@ void drawBee() {
 
   // Anennae
   noFill();
-  stroke(0, 0, 0);
+  stroke(239, 15, 7);
   if (beeGender <= 2) {
     // Females
     beginShape();
@@ -271,10 +273,10 @@ void drawBee() {
     curveVertex(centerX + antennae3X,  centerY - antennae3Y);
     endShape();
   }
-  
+
   // Eyes
-  fill(0, 20, 15);
-  stroke(0, 20, 15);
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   beginShape();
   vertex(centerX - headOriginX, centerY - thoraxOriginY);
   vertex(centerX - ((headOriginX + thoraxOriginX) * 0.5), centerY - thoraxOriginY);
@@ -291,8 +293,8 @@ void drawBee() {
   endShape();
 
   // Head
-  fill(0, 20, 15);
-  stroke(0, 20, 15);
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   beeHead.addPoint(centerX - headOriginX, centerY - headOriginY);
   beeHead.addPoint(centerX + headOriginX, centerY - headOriginY);
   beeHead.addPoint(centerX + headOriginX, centerY - thoraxOriginY);
@@ -305,8 +307,8 @@ void drawBee() {
   endShape();
 
   // Thorax
-  fill(0, 20, 15);
-  stroke(0, 20, 15);
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   beeThorax1.addPoint(centerX - thoraxOriginX, centerY - thoraxOriginY);
   beeThorax1.addPoint(centerX + thoraxOriginX, centerY - thoraxOriginY);
   beeThorax1.addPoint(centerX + coxaForeX,     centerY - coxaForeY);
@@ -317,9 +319,9 @@ void drawBee() {
     vertex(beeThorax1.xpoints[i], beeThorax1.ypoints[i]);
   }
   endShape();
-  
-  fill(0, 20, 15);
-  stroke(0, 20, 15);
+
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   beeThorax2.addPoint(centerX - coxaForeX,     centerY - coxaForeY);
   beeThorax2.addPoint(centerX + coxaForeX,     centerY - coxaForeY);
   beeThorax2.addPoint(centerX + thoraxMidX,    centerY - thoraxMidY);
@@ -332,9 +334,9 @@ void drawBee() {
     vertex(beeThorax2.xpoints[i], beeThorax2.ypoints[i]);
   }
   endShape();
-  
-  fill(0, 20, 15);
-  stroke(0, 20, 15);
+
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   beeThorax3.addPoint(centerX - coxaMidX,      centerY - coxaMidY);
   beeThorax3.addPoint(centerX + coxaMidX,      centerY - coxaMidY);
   beeThorax3.addPoint(centerX + coxaHindX,     centerY + coxaHindY);
@@ -347,8 +349,8 @@ void drawBee() {
   endShape();
 
   // Abdomen
-  fill(0, 20, 15);
-  stroke(0, 20, 15);
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   beeAbdTop.addPoint(centerX - abdomen1X, centerY + abdomen1Y);
   beeAbdTop.addPoint(centerX + abdomen1X, centerY + abdomen1Y);
   beeAbdTop.addPoint(centerX + abdomen2X, centerY + abdomen1Y + abdomen2Y);
@@ -359,9 +361,9 @@ void drawBee() {
     vertex(beeAbdTop.xpoints[i], beeAbdTop.ypoints[i]);
   }
   endShape();
-  
-  fill(0, 20, 15);
-  stroke(0, 20, 15);
+
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   beeAbdMid1.addPoint(centerX - abdomen2X, centerY + abdomen1Y + abdomen2Y);
   beeAbdMid1.addPoint(centerX + abdomen2X, centerY + abdomen1Y + abdomen2Y);
   beeAbdMid1.addPoint(centerX + abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
@@ -372,9 +374,9 @@ void drawBee() {
     vertex(beeAbdMid1.xpoints[i], beeAbdMid1.ypoints[i]);
   }
   endShape();
-  
-  fill(0, 20, 15);
-  stroke(0, 20, 15);
+
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   beeAbdMid2.addPoint(centerX - abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
   beeAbdMid2.addPoint(centerX + abdomen3X, centerY + abdomen1Y + abdomen2Y + abdomen3Y);
   beeAbdMid2.addPoint(centerX + abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
@@ -385,9 +387,9 @@ void drawBee() {
     vertex(beeAbdMid2.xpoints[i], beeAbdMid2.ypoints[i]);
   }
   endShape();
-  
-  fill(0, 20, 15);
-  stroke(0, 20, 15);
+
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   beeTail1.addPoint(centerX - abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
   beeTail1.addPoint(centerX + abdomen4X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y);
   beeTail1.addPoint(centerX + abdomen5X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y);
@@ -400,10 +402,10 @@ void drawBee() {
     vertex(beeTail1.xpoints[i], beeTail1.ypoints[i]);
   }
   endShape();
-  
+
   if (beeGender > 2) {
-  fill(0, 20, 15);
-  stroke(0, 20, 15);
+  fill(239, 15, 7);
+  stroke(239, 15, 7);
   beeTail2.addPoint(centerX - abdomen6X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y);
   beeTail2.addPoint(centerX + abdomen6X, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y);
   beeTail2.addPoint(centerX, centerY + abdomen1Y + abdomen2Y + abdomen3Y + abdomen4Y + abdomen5Y + abdomen6Y + abdomen7Y);
@@ -427,7 +429,7 @@ void drawBee() {
   vertex(centerX - wingFore4X, centerY - wingFore4Y);
   vertex(centerX - wingOriginX, centerY - wingOriginY);
   endShape();
-  
+
   beginShape();
   vertex(centerX + wingOriginX, centerY - wingOriginY);
   vertex(centerX + wingFore1X, centerY - wingFore1Y);
@@ -436,7 +438,7 @@ void drawBee() {
   vertex(centerX + wingFore4X, centerY - wingFore4Y);
   vertex(centerX + wingOriginX, centerY - wingOriginY);
   endShape();
-  
+
   // Hind Wings
   beginShape();
   vertex(centerX - wingOriginX, centerY - wingOriginY);
@@ -445,7 +447,7 @@ void drawBee() {
   vertex(centerX - wingHind3X, centerY - wingHind3Y);
   vertex(centerX - wingOriginX, centerY - wingOriginY);
   endShape();
-  
+
   beginShape();
   vertex(centerX + wingOriginX, centerY - wingOriginY);
   vertex(centerX + wingHind1X, centerY - wingHind1Y);
@@ -471,7 +473,7 @@ void setGender() {
 
 void setColors() {
   int yellower = floor(random(10));
-  if (yellower <= 6) {
+  if (yellower <= 3) {
     println("bee colours made yellower");
     color1 = color(floor(random(30,60)), floor(random(75, 100)), floor(random(75, 100)));
     color2 = color(floor(random(30,60)), floor(random(75, 100)), floor(random(75, 100)));
@@ -559,7 +561,7 @@ void setColors() {
 
 void drawHair(java.awt.Polygon bodyPart) {
   int centerX = width / 2;
-  
+
   // Get color
   if(bodyPart == beeHead) {
     stroke(headCol, 60);
@@ -578,7 +580,7 @@ void drawHair(java.awt.Polygon bodyPart) {
   } else if(bodyPart == beeTail1 || bodyPart == beeTail2) {
     stroke(tailCol, 60);
   }
-  
+
   for(int iX = 0; iX < width; iX++) {
     for (int iY = 0; iY < height; iY++) {
       if(bodyPart.contains(iX, iY)) {
