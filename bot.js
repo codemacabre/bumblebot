@@ -9,7 +9,7 @@ var fs = require("fs");
 var T = new Twit(config);
 
 tweetIt(); // Send first tweet before interval counter
-setInterval(tweetIt, 1000*60); // Send tweet every 60 seconds
+setInterval(tweetIt, 1000*60*30); // Send tweet every 30 mins
 
 function tweetIt() {
   // Path to Processing sketch
@@ -23,18 +23,19 @@ function tweetIt() {
     }
     var imgBee = fs.readFileSync(imgFilename, imgParams); // Read image
 
-    var txtFilename = "bumblebot/output.txt"; // Path to text file output from Processing
-    var txtParams = {
-      encoding: "utf8"
-    }
-    var txtBee = fs.readFileSync(txtFilename, txtParams); // Read text
+    // var txtFilename = "bumblebot/output.txt"; // Path to text file output from Processing
+    // var txtParams = {
+    //   encoding: "utf8"
+    // }
+    // var txtBee = fs.readFileSync(txtFilename, txtParams); // Read text
+
 
     T.post("media/upload", { media_data: imgBee }, uploaded); // Upload image before tweeting
 
     function uploaded(err, data, response) {
       var id = data.media_id_string; // Read uploaded image
       var tweet = {
-        status:     txtBee + "#bumblebot", // Tweet text content
+        status:     "", // Tweet text content
         media_ids:  [id] // Tweet image content
       }
       T.post("statuses/update", tweet, tweeted); // Send tweet
