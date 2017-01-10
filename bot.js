@@ -9,7 +9,7 @@ var fs = require("fs");
 var T = new Twit(config);
 
 tweetIt(); // Send first tweet before interval counter
-setInterval(tweetIt, 1000*60*30); // Send tweet every 30 mins
+setInterval(tweetIt, 1000*60*60*2); // Send tweet every 2 hrs
 
 function tweetIt() {
   // Path to Processing sketch
