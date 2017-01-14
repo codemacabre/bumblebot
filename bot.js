@@ -8,8 +8,17 @@ var fs = require("fs");
 
 var T = new Twit(config);
 
-tweetIt(); // Send first tweet before interval counter
-setInterval(tweetIt, 1000*60*60*2); // Send tweet every 2 hrs
+loop();
+
+function loop() {
+  var now = new Date();
+  if ((now.getHours() % 2 === 0) && now.getMinutes() === 0) {
+    tweetIt();
+  }
+  now = new Date(); // allow for time passing
+  var delay = 60000 - (now % 60000); // exact ms to next minute interval
+  setTimeout(loop, delay);
+}
 
 function tweetIt() {
   // Path to Processing sketch
