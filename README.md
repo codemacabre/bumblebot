@@ -11,4 +11,4 @@ Future enhancements will include interactivity and procedurally generated names 
 Although not affiliated with any organisation, Bumblebot has been inspired by the work of the [Bumblebee Conservation Trust](http://bumblebeeconservation.org/), [IBRA](http://www.ibrabee.org.uk/) and Buglife's [Urban Buzz](https://www.buglife.org.uk/urban-buzz/) project, as well as [@moth generator](https://twitter.com/mothgenerator) by Katie Rose Pipkin and Loren Schmidt.
 
 ## License
-BumbleBot is not yet open source.
+BumbleBot is open source, licensed under the [MIT license](./LICENSE.md).
