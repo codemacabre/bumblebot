@@ -1,8 +1,8 @@
 # Bumblebot
 
-[![Codeship Build](https://img.shields.io/codeship/38045340-eeee-0134-6d5c-62b847b8d86d/master.svg)](https://app.codeship.com/projects/208745)
+[![Codeship build](https://img.shields.io/codeship/38045340-eeee-0134-6d5c-62b847b8d86d/master.svg)](https://app.codeship.com/projects/208745)
 [![GitHub issues](https://img.shields.io/github/issues/codemacabre/bumblebot.svg)](https://github.com/codemacabre/bumblebot/issues)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CodeMacabre/bumblebot/master/LICENSE.md)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/CodeMacabre/bumblebot/blob/master/LICENSE.md)
 
 ## Overview
 [BumbleBot](https://twitter.com/bumblebot) is a Twitter bot created using [Node.js](https://nodejs.org/) and [Processing]((http://processing.org/)) to post procedurally generated bumblebees.
