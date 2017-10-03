@@ -3,10 +3,10 @@
 [![GitHub issues](https://img.shields.io/github/issues/codemacabre/bumblebot.svg)](https://github.com/codemacabre/bumblebot/issues)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/CodeMacabre/bumblebot/blob/master/LICENSE.md)
 
-*NOTE: BumbleBot has been temporarily deactivated. It will return after some maintenace and added functionality in the near future.*
+*NOTE: BumbleBot has been temporarily deactivated. It will return after some maintenance and added functionality in the near future.*
 
 ## Overview
-[BumbleBot](https://twitter.com/beegenerator) is a Twitter bot created using [Node.js](https://nodejs.org/) and [Processing]((http://processing.org/)) to post procedurally generated bumblebees.
+[BumbleBot](https://twitter.com/beegenerator) is a Twitter bot created using [Node.js](https://nodejs.org/) and [Processing](http://processing.org/) to post procedurally generated bumblebees.
 
 Originally written as a standalone Processing sketch to explore insect anatomy, it continues to generate accurate bee structures (its bumblebees have slight anatomical variations based on gender; see the antennae, hind legs and abdomen segments for example).
 
