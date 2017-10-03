@@ -1,11 +1,12 @@
 # Bumblebot
 
-[![Codeship build](https://img.shields.io/codeship/38045340-eeee-0134-6d5c-62b847b8d86d/master.svg)](https://app.codeship.com/projects/208745)
 [![GitHub issues](https://img.shields.io/github/issues/codemacabre/bumblebot.svg)](https://github.com/codemacabre/bumblebot/issues)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/CodeMacabre/bumblebot/blob/master/LICENSE.md)
 
+*NOTE: BumbleBot has been temporarily deactivated. It will return after some maintenace and added functionality in the near future.*
+
 ## Overview
-[BumbleBot](https://twitter.com/bumblebot) is a Twitter bot created using [Node.js](https://nodejs.org/) and [Processing]((http://processing.org/)) to post procedurally generated bumblebees.
+[BumbleBot](https://twitter.com/beegenerator) is a Twitter bot created using [Node.js](https://nodejs.org/) and [Processing]((http://processing.org/)) to post procedurally generated bumblebees.
 
 Originally written as a standalone Processing sketch to explore insect anatomy, it continues to generate accurate bee structures (its bumblebees have slight anatomical variations based on gender; see the antennae, hind legs and abdomen segments for example).
 
@@ -13,6 +14,30 @@ Future enhancements will include interactivity and procedurally generated names 
 
 ## Inspiration
 Although not affiliated with any organisation, BumbleBot has been inspired by the work of the [Bumblebee Conservation Trust](http://bumblebeeconservation.org/), [IBRA](http://www.ibrabee.org.uk/) and Buglife's [Urban Buzz](https://www.buglife.org.uk/urban-buzz/) project, as well as [@mothgenerator](https://twitter.com/mothgenerator) by Katie Rose Pipkin and Loren Schmidt.
+
+## Usage
+BumbleBot requires the [twit](https://www.npmjs.com/package/twit) Node package to be installed in the `node_modules` subdirectory to communicate with Twitter.
+
+The bot can be run using the following command:
+```
+$ node bot.js
+```
+
+API keys are required to interact with Twitter. These should be saved in the file `config.js` (not contained in this repo for obvious security reasons). Use the following formats:
+
+#### config.js
+```javascript
+module.exports = {
+  consumer_key:         'YOUR-KEY-HERE',
+  consumer_secret:      'YOUR-KEY-HERE',
+  access_token:         'YOUR-KEY-HERE',
+  access_token_secret:  'YOUR-KEY-HERE',
+  timeout_ms:           60*1000
+}
+```
+
+## Disclaimer
+This file only provides basic usage information and it is outside of the scope of this repo to provide additional support. I highly recommend following Daniel Shiffman's [Twitter Bot Tutorial](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6atTSxoRiVnSuOn6JHnq2yV) series to learn more.
 
 ## License
 BumbleBot is open source, licensed under the [MIT license](./LICENSE.md).
