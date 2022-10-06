@@ -1,7 +1,6 @@
 # Bumblebot
 
-[![GitHub issues](https://img.shields.io/github/issues/codemacabre/bumblebot.svg)](https://github.com/codemacabre/bumblebot/issues)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/CodeMacabre/bumblebot/blob/master/LICENSE.md)
+[![License: Hippocratic 3.0](https://img.shields.io/badge/License-Hippocratic_3.0-lightgrey.svg)](https://firstdonoharm.dev/version/3/0/full.html)
 
 *NOTE: BumbleBot has been temporarily deactivated. It will return after some maintenance and added functionality in the near future.*
 
@@ -40,4 +39,6 @@ module.exports = {
 This file only provides basic usage information and it is outside of the scope of this repo to provide additional support. I highly recommend following Daniel Shiffman's [Twitter Bot Tutorial](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6atTSxoRiVnSuOn6JHnq2yV) series to learn more.
 
 ## License
-BumbleBot is open source, licensed under the [MIT license](./LICENSE.md).
+BumbleBot is ethical open source software, offered under the Hippocratic License 3.0, a permissive license that enforces the licensee to comply with human rights principles and laws.
+
+Other software packages and libraries used fall under their own respective licenses.

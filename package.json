@@ -1,6 +1,6 @@
 {
   "name": "bumblebot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Procedurally generated pollinators.",
   "main": "bot.js",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CodeMacabre/bumblebot.git"
+    "url": "git+https://github.com/codemacabre/bumblebot.git"
   },
-  "author": "CodeMacabre",
-  "license": "MIT",
+  "author": "Myles Lewando",
+  "license": "Hippocratic-3.0",
   "bugs": {
-    "url": "https://github.com/CodeMacabre/bumblebot/issues"
+    "url": "https://github.com/codemacabre/bumblebot/issues"
   },
-  "homepage": "http://codemacabre.com/prj/bumblebot",
+  "homepage": "https://github.com/codemacabre/bumblebot#readme",
   "dependencies": {
     "twit": "^2.2.5"
   }
